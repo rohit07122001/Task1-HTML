@@ -1,0 +1,830 @@
+        .ring-name-overlay {
+        position: absolute;
+        top: 28%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 7vw;
+        font-weight: 900;
+        color: transparent;
+       
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 35;
+        letter-spacing: 0.3rem;
+        /* Text background clip effect */
+        background-clip: text;
+        -webkit-background-clip: text;
+      
+        -webkit-text-fill-color: transparent;
+        /* Subtle text outline */
+        text-shadow: 
+            1px 1px 1px rgba(0,0,0,0.1),
+            -1px -1px 1px rgba(0,0,0,0.1);
+        /* Blend with image */
+        mix-blend-mode: multiply;
+        opacity: 0.8;
+    }
+
+    .center-ring {
+        position: relative;
+    }
+
+    .center-ring::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        filter: brightness(1.1) contrast(0.9);
+        z-index: 34;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+
+
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        header {
+            background-color: white;
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Logo styles */
+        .logo {
+            font-size: 1.5rem;
+            color: black;
+        }
+        
+        .logo span {
+            font-weight: 800;
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Desktop navigation */
+        .desktop-nav {
+            display: none;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        
+        .desktop-nav a {
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .desktop-nav a:hover {
+            color: #666;
+        }
+        
+        /* Navigation icons */
+        .nav-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-icons a {
+            color: black;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-icons a:hover {
+            color: #666;
+        }
+        
+        /* Secondary row */
+        .secondary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .secondary-row a {
+            color: black;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .secondary-row a:hover {
+            color: #666;
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .mobile-menu a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu a:hover {
+            color: #666;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-secondary-links {
+            padding-top: 1rem;
+        }
+        
+        .mobile-secondary-links a {
+            font-size: 0.875rem;
+        }
+        
+        /* Mobile layout */
+        @media (max-width: 767px) {
+            .main-row {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .logo-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                order: 2;
+            }
+            
+            .mobile-menu-button-container {
+                position: absolute;
+                left: 1.5rem;
+                top: 1rem;
+            }
+            
+            .nav-icons-container {
+                position: absolute;
+                right: 1.5rem;
+                top: 1rem;
+            }
+            
+            .desktop-nav {
+                display: none !important;
+            }
+            
+            .secondary-row {
+                display: none;
+            }
+        }
+        
+        /* Desktop layout */
+        @media (min-width: 768px) {
+            .main-row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .logo-container {
+                flex: 0 0 auto;
+            }
+            
+            .nav-content {
+                display: flex;
+                align-items: center;
+                flex: 1;
+            }
+            
+            .desktop-nav {
+                display: block;
+                flex: 1;
+            }
+            
+            .desktop-nav ul {
+                justify-content: center;
+            }
+            
+            .mobile-menu-button {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            .secondary-row {
+                display: flex;
+            }
+        }
+
+        /* Hide heart icon on mobile */
+@media (max-width: 767px) {
+    .nav-icons a:nth-child(2) {  /* This targets the second icon (heart) */
+        display: none;
+    }
+}
+
+
+/* Hide heart icon on mobile */
+@media (max-width: 767px) {
+    .heart-icon {
+        display: none;
+    }
+}
+
+        /* ------------------------------------------ */
+
+         /* Glowing text effect */
+    /* Glowing text effect */
+.glowing-text {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    to { text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.6); }
+}
+
+/* Text shadow for large name */
+.text-shadow-lg {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Ring item styling */
+.ring-item {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+    border-radius: 50%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.center-ring {
+    z-index: 30;
+    opacity: 1;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+    #ring-carousel-section {
+        min-height: 80vh;
+        padding-top: 20px;
+         position: relative; /* Add this to contain absolute positioned children */
+        overflow: visible;
+    }
+    
+    #large-ring-name {
+        font-size: 2.2rem;
+        top: 15%;
+    }
+    
+    #ring-info {
+        position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 40; /* Ensure it appears above other elements */
+    pointer-events: auto; /* Make sure it's clickable */
+     bottom: 5%; /* Adjust this value as needed */
+        left: 0;
+        right: 0;
+        padding: 0 15px;
+        transform: none; /* Remove translate if it's causing issues */
+}
+    
+    .ring-info {
+        transform: translate(-50%, 0);
+    }
+    
+    /* Mobile-specific ring sizing */
+    .ring-item {
+        background-size: 90% auto;
+    }
+    
+    .center-ring {
+        border-width: 1px;
+    }
+}
+
+
+
+
+
+
+
+        /* ------------------- */
+         @media (max-width: 640px) {
+        /* Adjust text sizes for mobile */
+        .text-3xl {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+        
+        .text-lg {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+        
+        /* Ensure grid takes full width */
+        .max-w-7xl {
+            max-width: 100%;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        /* Reduce padding on mobile */
+        section {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+    }
+
+    /* -------------------------------------- */
+
+     /* Mobile-specific adjustments */
+    @media (max-width: 1023px) {
+        .keep-in-touch {
+            flex-direction: column;
+        }
+        
+        .text-center {
+            text-align: center !important;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+       
+
+
+
+        :root {
+            --color-gold: #d4af37;
+            --color-gold-dark: #c09a2f;
+            --color-pink: #F6B395;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+
+        
+        #ring-carousel {
+            height: 60vh;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            top: -30px;
+        }
+
+       
+        .collection-grid {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        
+        .slider-container {
+            height: 380px;
+        }
+
+        .diamond-item {
+            width: 220px;
+        }
+
+        .diamond-item img {
+            height: 220px;
+        }
+
+        /* Footer */
+        .footer-text {
+            font-size: 1rem;
+        }
+
+        
+        @media (min-width: 640px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .collection-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .diamond-item {
+                width: 240px;
+            }
+            
+            .diamond-item img {
+                height: 240px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                font-size: 1.1rem;
+            }
+            
+            #ring-carousel {
+                height: 70vh;
+            }
+            
+            .product-name {
+                font-size: 1.5rem;
+                top: -35px;
+            }
+            
+            .slider-container {
+                height: 420px;
+            }
+            
+            .diamond-item {
+                width: 260px;
+            }
+            
+            .diamond-item img {
+                height: 260px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .collection-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            #ring-carousel {
+                height: 80vh;
+            }
+            
+            .product-name {
+                font-size: 2rem;
+                top: -40px;
+            }
+            
+            .slider-container {
+                height: 480px;
+            }
+            
+            .diamond-item {
+                width: 300px;
+            }
+            
+            .diamond-item img {
+                height: 300px;
+            }
+        }
+
+        
+        .ring-item {
+            transition: all 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+            background-size: cover;
+            background-position: center;
+            will-change: transform, opacity;
+        }
+
+        .ring-info {
+            transition: all 0.4s ease-out;
+        }
+
+        .center-ring {
+            z-index: 30;
+        }
+
+        @keyframes subtleGlow {
+            0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+            50% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+        }
+
+        .glowing-text {
+            animation: subtleGlow 2.5s ease-in-out infinite;
+        }
+
+        
+        .slider-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diamond-item {
+            position: absolute;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: pointer;
+            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        .diamond-wrapper {
+            border: 4px solid #f3f4f6;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .diamond-item img {
+            width: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            display: block;
+        }
+
+        .diamond-content {
+            padding: 14px 0;
+        }
+
+        .diamond-name {
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .diamond-tagline {
+            color: var(--color-pink);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .diamond-item:hover {
+            z-index: 10 !important;
+        }
+
+        .diamond-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .diamond-item:hover .diamond-wrapper {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Diamond Positioning with Overlap */
+        .diamond-item[data-pos="1"] { 
+            left: 1%; 
+            transform: translateX(-20%) scale(0.85); 
+            z-index: 3;
+            opacity: 0.9;
+        }
+        .diamond-item[data-pos="2"] { 
+            left: 17%; 
+            transform: translateX(-40%) scale(0.9); 
+            z-index: 4;
+            opacity: 0.92;
+        }
+        .diamond-item[data-pos="3"] { 
+            left: 33%; 
+            transform: translateX(-50%) scale(0.95); 
+            z-index: 5;
+            opacity: 0.95;
+        }
+        .diamond-item[data-pos="4"] { 
+            left: 50%; 
+            transform: translateX(-50%) scale(1.15); 
+            z-index: 6;
+            opacity: 1;
+        }
+        .diamond-item[data-pos="5"] { 
+            left: 67%; 
+            transform: translateX(-50%) scale(0.95); 
+            z-index: 5;
+            opacity: 0.95;
+        }
+        .diamond-item[data-pos="6"] { 
+            left: 83%; 
+            transform: translateX(-60%) scale(0.9); 
+            z-index: 4;
+            opacity: 0.92;
+        }
+        .diamond-item[data-pos="7"] { 
+            left: 99%; 
+            transform: translateX(-80%) scale(0.85); 
+            z-index: 3;
+            opacity: 0.9;
+        }
+
+        /* Navigation Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
+            gap: 12px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--color-pink);
+            transform: scale(1.3);
+            box-shadow: 0 0 8px rgba(246, 179, 149, 0.6);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-button {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .nav-icons {
+                margin-left: auto;
+            }
+        }
+
+        
+        .keep-in-touch {
+            flex-direction: column;
+        }
+
+        .keep-in-touch-images {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+            .keep-in-touch {
+                flex-direction: row;
+            }
+        }
+    
+
+       
+
+        /* Add these media queries to your existing CSS */
+
+/* Tablet/iPad Portrait (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #ring-carousel-section {
+        min-height: 70vh;
+    }
+    
+    .ring-item {
+        /* Adjust ring item sizing for tablets */
+        width: 180px !important;
+        height: 180px !important;
+        background-size: contain !important;
+    }
+    
+    .center-ring {
+        /* Center ring adjustments */
+        width: 220px !important;
+        height: 220px !important;
+    }
+    
+    #large-ring-name {
+        /* Adjust name positioning */
+        font-size: 5vw;
+        top: 25%;
+    }
+    
+    #ring-info {
+        /* Adjust info positioning */
+        bottom: 10%;
+        padding: 0 2rem;
+    }
+}
+
+/* Tablet/iPad Landscape (1024px and up, but smaller than desktop) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    #ring-carousel-section {
+        height: 75vh;
+    }
+    
+    .ring-item {
+        /* Slightly larger rings for landscape */
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .center-ring {
+        width: 240px !important;
+        height: 240px !important;
+    }
+    
+    #large-ring-name {
+        font-size: 4.5vw;
+    }
+}
+
+/* Additional adjustments for the ring overlay */
+.ring-name-overlay {
+    /* Make this more responsive */
+    font-size: min(7vw, 80px);
+}
+
+/* Ensure center ring maintains aspect ratio */
+.center-ring {
+    aspect-ratio: 1/1;
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+    max-height: 300px; /* Adjust as needed */
+}
